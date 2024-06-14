@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-
-
+            $table->unsignedBigInteger('role_id');
             $table->string('name');
             $table->string('surname');
             $table->string('username')->unique();
@@ -24,6 +23,7 @@ return new class extends Migration
             $table->string('profile_photo');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('role_id')->references('id')->on('roles');
 
 
         });
